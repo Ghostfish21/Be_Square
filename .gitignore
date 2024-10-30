@@ -1,4 +1,6 @@
 # This .gitignore file should be placed at the root of your Unity project directory
+20cards.xlsx
+.vscode/
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
@@ -25,6 +27,9 @@
 
 # Visual Studio cache directory
 .vs/
+
+# Idea cache directory
+/.idea/
 
 # Gradle cache directory
 .gradle/
@@ -70,3 +75,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Ignore temporaries from GameCI
+/[Aa]rtifacts/
+/[Cc]odeCoverage/
+Build-Server/mypr_Data/resources.assets.resS
+Build-Server/mypr_Data/resources.assets.resS
+/Build-Server
+/Build-Server/mypr_Data
+/Build-Server
