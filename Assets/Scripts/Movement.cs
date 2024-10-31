@@ -1,21 +1,24 @@
+using System;
+using DefaultNamespace;
+using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
+using SeagullDK;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviour {
     private Collisions coll;
     private Animator animator;
     private Rigidbody rb;
 
     // Movement Stats
-    [Header("Movement Stats")]
-    [Range(1, 50)]
+    [Header("Movement Stats")] [Range(1, 50)]
     public float speed = 10f;
+
     public float moveX;
 
     // Jump Stats
-    [Header("Jump Stats")]
-    [Range(1, 50)]
-    public float jumpVelocity;
+    [Header("Jump Stats")] [Range(1, 50)] public float jumpVelocity;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public float coyoteTime = 0.2f;
@@ -24,143 +27,145 @@ public class Movement : MonoBehaviour
     private float jumpBufferCounter;
 
     // Booleans
-    [Header("Booleans")]
-    public bool wallSliding;
+    [Header("Booleans")] public bool wallSliding;
     public bool walljumping;
     public bool canMove = true;
     public bool groundTouched;
-    public bool facingRight = true;
+    public bool? facingRight = true;
     public bool dashing;
     public bool hasDashed;
 
-    private void Awake()
-    {
+    private void Awake() {
         coll = GetComponent<Collisions>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
-        // Freeze Z rotation
-        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
         animator.SetFloat("yVelocity", rb.velocity.y);
-        FlipController();
     }
 
-    private void Update()
-    {
-        moveX = Input.GetAxis("Horizontal");
-
-        Vector3 direction = new Vector3(moveX, 0, 0); // 2D movement in a 3D space
-        Run(direction);
+    private void Update() {
+        Run();
+        Flip();
 
         HandleJump();
-        UpdateCoyoteTime();
-        ApplyGravity();
     }
 
-    private void Run(Vector3 direction)
-    {
-        if (!walljumping)
-        {
-            rb.velocity = new Vector3(direction.x * speed, rb.velocity.y, 0); // Keep Z velocity fixed
+    private void Run() {
+        if (!walljumping) {
+            moveX = Input.GetAxis("Horizontal");
+            rb.AddForce(transform.forward * Mathf.Abs(moveX) * Time.deltaTime * 100 * speed);
         }
     }
 
-    private void HandleJump()
-    {
-        if (!coll.onWall || coll.onGround)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
+    private TweenerCore<Quaternion, Vector3, QuaternionOptions> rotateTween;
+
+    private void Flip() {
+        if (facingRight == null) {
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
+                facingRight = true;
+                if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+                rotateTween = rb.transform.DORotate(facing, 0.25f);
+            } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
+                facingRight = false;
+                if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+                rotateTween = rb.transform.DORotate(facing.time((-1f).ff_(1)), 0.25f);
+            }
+        }
+        
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
+            if (facingRight.Value) return;
+            facingRight = true;
+            if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+            rotateTween = rb.transform.DORotate(facing, 0.25f);
+        }
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
+            if (!facingRight.Value) return;
+            facingRight = false;
+            if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+            rotateTween = rb.transform.DORotate(facing.time((-1f).ff_(1)), 0.25f);
+        }
+    }
+
+    private void HandleJump() {
+        if (!coll.onWall || coll.onGround) {
+            if (Input.GetButtonDown("Jump")) {
                 jumpBufferCounter = jumpBufferTime;
 
-                if (jumpBufferCounter > 0 && (coll.onGround || coyoteTimer > 0f))
-                {
-                    Jump(Vector3.up);
+                if (jumpBufferCounter > 0 && (coll.onGround || coyoteTimer > 0f)) {
+                    Jump(rb.transform.up);
                     coyoteTimer = 0f; // Reset timer after jumping
                     jumpBufferCounter = 0f;
                 }
             }
         }
 
-        if (coll.onGround && !groundTouched)
-        {
+        if (coll.onGround && !groundTouched) {
             FirstTouch();
             groundTouched = true;
             coyoteTimer = coyoteTime;
             jumpBufferCounter = 0f;
         }
-        else if (!coll.onGround && groundTouched)
-        {
+        else if (!coll.onGround && groundTouched) {
             groundTouched = false;
         }
     }
 
-    private void UpdateCoyoteTime()
-    {
-        if (!coll.onGround)
-        {
+    private void UpdateCoyoteTime() {
+        if (!coll.onGround) {
             coyoteTimer -= Time.deltaTime;
             coyoteTimer = Mathf.Max(coyoteTimer, 0f); // Ensure it doesn't go negative
         }
 
-        if (jumpBufferCounter > 0f)
-        {
+        if (jumpBufferCounter > 0f) {
             jumpBufferCounter -= Time.deltaTime;
         }
     }
 
-    private void ApplyGravity()
-    {
-        if (!coll.onGround)
-        {
-            if (rb.velocity.y < 0)
-            {
+    private void ApplyGravity() {
+        if (!coll.onGround) {
+            if (rb.velocity.y < 0) {
                 rb.velocity += Vector3.up * (fallMultiplier - 1) * Physics.gravity.y * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0)
-            {
+            else if (rb.velocity.y > 0) {
                 rb.velocity += Vector3.up * (lowJumpMultiplier - 1) * Physics.gravity.y * Time.deltaTime;
             }
         }
-        else
-        {
+        else {
             // Reset Y velocity when grounded to prevent falling
-            if (rb.velocity.y < 0)
-            {
+            if (rb.velocity.y < 0) {
                 rb.velocity = new Vector3(rb.velocity.x, 0, 0); // Keep X and Z velocity intact
             }
         }
     }
 
-    private void FlipSprite()
-    {
-        facingRight = !facingRight;
-        transform.rotation = Quaternion.Euler(0f, facingRight ? 90f : -90f, 0f); // Adjust rotation based on direction
-    }
-
-    private void FlipController()
-    {
-        if ((rb.velocity.x > 0 && !facingRight) || (rb.velocity.x < 0 && facingRight))
-        {
-            FlipSprite();
-        }
-    }
-
-    private void Jump(Vector3 dir)
-    {
+    private void Jump(Vector3 dir) {
         animator.SetTrigger("Jump");
-        rb.velocity = new Vector3(rb.velocity.x, 0f, 0f); // Reset Y velocity before jumping
+
+        Vector3 resetVec = 1f.fff() - dir;
+        
+        rb.velocity = rb.velocity.time(resetVec); // Reset Y velocity before jumping
         rb.velocity += dir * jumpVelocity; // Apply jump force
     }
 
-    private void FirstTouch()
-    {
+    private void FirstTouch() {
         hasDashed = false; // Dash resets when player touches ground
         dashing = false; // Dashing reset
+    }
+    
+    internal Vector3 facing = new(0, 90, 0);
+    
+    private void OnTriggerEnter(Collider other) {
+        if (!other.CompareTag("Portal")) return;
+        Portal p = other.gameObject.getComponent<Portal>();
+
+        facingRight = null;
+        rb.MovePosition(p.teleportPosition.position);
+        Physics.gravity = p.newGravity.getDelta();
+        if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+        facing = p.newGravity.getFacing();
+        rotateTween = transform.DORotate(p.newGravity.getFacing(), 0.65f);
     }
 }

@@ -520,7 +520,11 @@ namespace SeagullDK {
         /// <summary>
         /// Turn the given float into a Vector2 with input X, and input Y values;
         /// </summary>
-        public static Vector2 __(this float _, float x, float y) => new(x, y); 
+        public static Vector2 __(this float _, float x, float y) => new(x, y);
+
+        public static Vector3 time(this Vector3 self, Vector3 other) {
+            return new Vector3(self.x * other.x, self.y * other.y, self.z * other.z);
+        }
         
         /// <summary>
         /// Turn the given World Pos Vector3 into a Screen Pos Vector3;
