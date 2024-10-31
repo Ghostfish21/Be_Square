@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour {
     private void Update() {
         Run();
         Flip();
-
+        //ApplyGravity();
         HandleJump();
     }
 
