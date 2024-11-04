@@ -27,6 +27,8 @@ public class Collisions : MonoBehaviour
     {
         // Check if on ground
         onGround = Physics.CheckSphere(transform.position + bottomOffset, collisionRadius, groundLayer);
+        if (onGround) Movement.inst.rb.drag = 3;
+        else Movement.inst.rb.drag = 0;
 
         // Check for walls
         onWall = Physics.CheckSphere(transform.position + rightOffset, collisionRadius, groundLayer)

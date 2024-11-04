@@ -17,6 +17,5 @@ namespace DefaultNamespace {
 
         private TweenerCore<Quaternion, Vector3, QuaternionOptions> rotationTweener;
         
-        
     }
 }

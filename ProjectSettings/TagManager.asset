@@ -5,17 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Portal
+  - Clickable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - NotRender
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - Ground 1
+  - Exit Sign
+  - Player
   - 
   - 
   - 

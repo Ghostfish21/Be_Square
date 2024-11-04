@@ -7,9 +7,12 @@ using SeagullDK;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    private static Movement m;
+    public static Movement inst => m;
+    
     private Collisions coll;
     private Animator animator;
-    private Rigidbody rb;
+    public Rigidbody rb { get; private set; }
 
     // Movement Stats
     [Header("Movement Stats")] [Range(1, 50)]
@@ -36,14 +39,17 @@ public class Movement : MonoBehaviour {
     public bool hasDashed;
 
     private void Awake() {
+        m = this;
         coll = GetComponent<Collisions>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate() {
-        animator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
-        animator.SetFloat("yVelocity", rb.velocity.y);
+        Vector3 upVelo = rb.velocity.time(rb.transform.up);
+        
+        animator.SetFloat("xVelocity", Mathf.Abs(Input.GetAxis("Horizontal")));
+        animator.SetFloat("yVelocity", upVelo.x + upVelo.y + upVelo.z);
     }
 
     private void Update() {
@@ -55,22 +61,23 @@ public class Movement : MonoBehaviour {
 
     private void Run() {
         if (!walljumping) {
+            if (!canMove) return;
+            if (!coll.onGround) return;
             moveX = Input.GetAxis("Horizontal");
             rb.AddForce(transform.forward * Mathf.Abs(moveX) * Time.deltaTime * 100 * speed);
         }
     }
-
     private TweenerCore<Quaternion, Vector3, QuaternionOptions> rotateTween;
 
     private void Flip() {
         if (facingRight == null) {
             if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
                 facingRight = true;
-                if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+                if (rotateTween != null && rotateTween.IsActive() && rotateTween.IsPlaying()) rotateTween.Kill();
                 rotateTween = rb.transform.DORotate(facing, 0.25f);
             } else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
                 facingRight = false;
-                if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+                if (rotateTween != null && rotateTween.IsActive() && rotateTween.IsPlaying()) rotateTween.Kill();
                 rotateTween = rb.transform.DORotate(facing.time((-1f).ff_(1)), 0.25f);
             }
         }
@@ -78,18 +85,20 @@ public class Movement : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
             if (facingRight.Value) return;
             facingRight = true;
-            if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+            if (rotateTween != null && rotateTween.IsActive() && rotateTween.IsPlaying()) rotateTween.Kill();
             rotateTween = rb.transform.DORotate(facing, 0.25f);
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) {
             if (!facingRight.Value) return;
             facingRight = false;
-            if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+            if (rotateTween != null && rotateTween.IsActive() && rotateTween.IsPlaying()) rotateTween.Kill();
             rotateTween = rb.transform.DORotate(facing.time((-1f).ff_(1)), 0.25f);
         }
     }
 
     private void HandleJump() {
+        if (!canMove) return;
+        
         if (!coll.onWall || coll.onGround) {
             if (Input.GetButtonDown("Jump")) {
                 jumpBufferCounter = jumpBufferTime;
@@ -156,15 +165,20 @@ public class Movement : MonoBehaviour {
     }
     
     internal Vector3 facing = new(0, 90, 0);
+    public StageMover middleLayer;
+    public StageMover innerLayer;
     
     private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("Portal")) return;
         Portal p = other.gameObject.getComponent<Portal>();
 
         facingRight = null;
+        CameraRotator.inst.playTween(transform);
+        middleLayer.playTween();
+        innerLayer.playTween();
         rb.MovePosition(p.teleportPosition.position);
         Physics.gravity = p.newGravity.getDelta();
-        if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+        if (rotateTween != null && rotateTween.IsActive() && rotateTween.IsPlaying()) rotateTween.Kill();
         facing = p.newGravity.getFacing();
         rotateTween = transform.DORotate(p.newGravity.getFacing(), 0.65f);
     }
