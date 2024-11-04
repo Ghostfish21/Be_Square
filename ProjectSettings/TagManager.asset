@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Portal
+<<<<<<< HEAD
   - Clickable
+=======
+  - Audio
+>>>>>>> afa9b49 (2D pixel sprite test)
   layers:
   - Default
   - TransparentFX

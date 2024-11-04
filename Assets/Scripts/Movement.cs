@@ -12,13 +12,19 @@ public class Movement : MonoBehaviour {
     
     private Collisions coll;
     private Animator animator;
+<<<<<<< HEAD
     public Rigidbody rb { get; private set; }
+=======
+    private Rigidbody rb;
+    private AudioManager audioSearch;
+    public ParticleSystem particles;
+>>>>>>> afa9b49 (2D pixel sprite test)
 
     // Movement Stats
     [Header("Movement Stats")] [Range(1, 50)]
     public float speed = 10f;
-
     public float moveX;
+
 
     // Jump Stats
     [Header("Jump Stats")] [Range(1, 50)] public float jumpVelocity;
@@ -38,11 +44,17 @@ public class Movement : MonoBehaviour {
     public bool dashing;
     public bool hasDashed;
 
+
+    private Vector3 currentGravity;
     private void Awake() {
         m = this;
         coll = GetComponent<Collisions>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        audioSearch = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+       
+
+        currentGravity = Physics.gravity;
     }
 
     private void FixedUpdate() {
@@ -55,7 +67,7 @@ public class Movement : MonoBehaviour {
     private void Update() {
         Run();
         Flip();
-        //ApplyGravity();
+        ApplyGravity();
         HandleJump();
     }
 
@@ -133,19 +145,35 @@ public class Movement : MonoBehaviour {
         }
     }
 
-    private void ApplyGravity() {
-        if (!coll.onGround) {
-            if (rb.velocity.y < 0) {
-                rb.velocity += Vector3.up * (fallMultiplier - 1) * Physics.gravity.y * Time.deltaTime;
+    public void SetPortalGravity(Vector3 newGravity)
+    {
+        currentGravity = newGravity;
+    }
+
+    private void ApplyGravity()
+    {
+        if (!coll.onGround)
+        {
+            // Apply custom gravity based on portal settings
+            rb.velocity += currentGravity * Time.deltaTime; // This handles gravity direction and strength
+
+            // Apply fall multiplier for downward movement
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector3.up * (fallMultiplier - 1) * currentGravity.y * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0) {
-                rb.velocity += Vector3.up * (lowJumpMultiplier - 1) * Physics.gravity.y * Time.deltaTime;
+            // Apply low jump multiplier for upward movement
+            else if (rb.velocity.y > 0)
+            {
+                rb.velocity += Vector3.up * (lowJumpMultiplier - 1) * currentGravity.y * Time.deltaTime;
             }
         }
-        else {
+        else
+        {
             // Reset Y velocity when grounded to prevent falling
-            if (rb.velocity.y < 0) {
-                rb.velocity = new Vector3(rb.velocity.x, 0, 0); // Keep X and Z velocity intact
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Keep X and Z velocity intact
             }
         }
     }
@@ -157,11 +185,13 @@ public class Movement : MonoBehaviour {
         
         rb.velocity = rb.velocity.time(resetVec); // Reset Y velocity before jumping
         rb.velocity += dir * jumpVelocity; // Apply jump force
+        AudioManager.instance.PlaySFX(audioSearch.jumpSFX);
     }
 
     private void FirstTouch() {
         hasDashed = false; // Dash resets when player touches ground
         dashing = false; // Dashing reset
+        AudioManager.instance.PlaySFX(audioSearch.landSFX);
     }
     
     internal Vector3 facing = new(0, 90, 0);
@@ -169,6 +199,7 @@ public class Movement : MonoBehaviour {
     public StageMover innerLayer;
     
     private void OnTriggerEnter(Collider other) {
+<<<<<<< HEAD
         if (!other.CompareTag("Portal")) return;
         Portal p = other.gameObject.getComponent<Portal>();
 
@@ -182,4 +213,20 @@ public class Movement : MonoBehaviour {
         facing = p.newGravity.getFacing();
         rotateTween = transform.DORotate(p.newGravity.getFacing(), 0.65f);
     }
+=======
+    if (!other.CompareTag("Portal")) return;
+    
+    Portal p = other.gameObject.GetComponent<Portal>();
+    
+    facingRight = null;
+    rb.MovePosition(p.teleportPosition.position);
+    // Set the new gravity based on the portal
+    SetPortalGravity(p.newGravity.getDelta());
+    
+    // Adjust facing direction based on portal gravity
+    if (rotateTween != null && rotateTween.IsPlaying()) rotateTween.Kill();
+    facing = p.newGravity.getFacing();
+    rotateTween = transform.DORotate(facing, 0.65f);
+}
+>>>>>>> afa9b49 (2D pixel sprite test)
 }
