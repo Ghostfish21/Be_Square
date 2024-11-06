@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-4 {
+        font-size: 72px;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #fff;
+        font-family: Reross-Quadratic, Reross;
+      }
+
+      .cls-6 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-5 {
+        font-size: 258px;
+      }
+    </style>
+  </defs>
+  <text class="cls-5" transform="translate(-.43 432.68)"><tspan x="0" y="0">r</tspan><tspan class="cls-7" x="74.3" y="0">c</tspan><tspan x="188.85" y="0">rc</tspan></text>
+  <text class="cls-4" transform="translate(-.57 503.42)"><tspan x="0" y="0">H</tspan><tspan class="cls-6" x="55.73" y="0">a</tspan><tspan class="cls-3" x="94.32" y="0">ow</tspan><tspan x="177.26" y="0">ei Ji</tspan><tspan class="cls-6" x="310.89" y="0">an</tspan><tspan x="389.52" y="0">g/</tspan><tspan class="cls-3" x="461.08" y="0">R</tspan><tspan class="cls-1" x="512.78" y="0">an</tspan><tspan x="591.4" y="0">dy M</tspan><tspan class="cls-6" x="747.5" y="0">a</tspan><tspan class="cls-2" x="786.09" y="0">nu/</tspan><tspan class="cls-3" x="899.71" y="0">Ra</tspan><tspan x="989.27" y="0">y Ma/Ric</tspan><tspan class="cls-6" x="1282.31" y="0">ha</tspan><tspan x="1361.51" y="0">rd </tspan><tspan x="0" y="86.4">t</tspan><tspan class="cls-6" x="21.31" y="86.4">a</tspan><tspan x="59.9" y="86.4">o</tspan></text>
+</svg>

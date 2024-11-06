@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-size: 72px;
+      }
+
+      .cls-4 {
+        fill: #fff;
+        font-family: Reross-Quadratic, Reross;
+      }
+
+      .cls-5 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-6 {
+        font-size: 258px;
+      }
+
+      .cls-7 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.02em;
+      }
+    </style>
+  </defs>
+  <text class="cls-4" transform="translate(750.89 454.68)"><tspan class="cls-6"><tspan class="cls-8" x="0" y="0">en</tspan><tspan x="276.83" y="0">d</tspan></tspan><tspan class="cls-3"><tspan x="72.56" y="86.4">(f</tspan><tspan class="cls-5" x="118.35" y="86.4">o</tspan><tspan x="155.5" y="86.4">r </tspan><tspan class="cls-1" x="196.4" y="86.4">n</tspan><tspan class="cls-7" x="236.43" y="86.4">o</tspan><tspan class="cls-2" x="272.86" y="86.4">w)</tspan></tspan></text>
+</svg>

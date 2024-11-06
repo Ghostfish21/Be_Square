@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Guiyuu_Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+    guid: c56b1379530e32643bdd522445632936
+  - enabled: 1
+    path: Assets/Scenes/Guiyuu_Scene_2.unity
+    guid: d7d3d5aa5b4e29a4085f84e0a1dd8f2e
+  - enabled: 1
+    path: Assets/Scenes/ray_next_level.unity
+    guid: c71611d4c6f2ed643a3273cc05e4a84e
+  - enabled: 1
+    path: Assets/Scenes/end.unity
+    guid: d40fd26446e0f23418f2cf6c7d7db092
   m_configObjects: {}
