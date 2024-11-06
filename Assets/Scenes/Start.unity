@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,8 +159,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309, y: -170}
-  m_SizeDelta: {x: 160, y: 54.888}
+  m_AnchoredPosition: {x: 596.3187, y: -314.96893}
+  m_SizeDelta: {x: 314.051, y: 107.735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200984426
 MonoBehaviour:
@@ -301,8 +302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 36.5, y: -29}
-  m_SizeDelta: {x: 911, y: 512.67}
+  m_AnchoredPosition: {x: 61.45, y: -38.21}
+  m_SizeDelta: {x: 1788.13, y: 1006.279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &265356215
 MonoBehaviour:
@@ -517,7 +518,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 56
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -588,12 +589,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!1 &619342950
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,8 +631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309, y: -99.55599}
-  m_SizeDelta: {x: 160, y: 54.888}
+  m_AnchoredPosition: {x: 596.3187, y: -176.69989}
+  m_SizeDelta: {x: 314.051, y: 107.735}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &619342952
 MonoBehaviour:
@@ -773,8 +774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -8, y: -8}
-  m_SizeDelta: {x: 1000, y: 550}
+  m_AnchoredPosition: {x: -25.895, y: 3.008}
+  m_SizeDelta: {x: 1962.821, y: 1079.551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398564098
 MonoBehaviour:
