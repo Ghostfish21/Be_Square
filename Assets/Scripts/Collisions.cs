@@ -20,22 +20,22 @@ public class Collisions : MonoBehaviour
     [Header("Collision")]
 
     public float collisionRadius = 0.2f;
-    public Vector3 bottomOffset, rightOffset, leftOffset; // Change to Vector3 for 3D
+    public Transform bottomOffset, rightOffset, leftOffset; // Change to Vector3 for 3D
     public Color debugCollisionColor = Color.red;
 
     public void Update()
     {
         // Check if on ground
-        onGround = Physics.CheckSphere(transform.position + bottomOffset, collisionRadius, groundLayer);
+        onGround = Physics.CheckSphere(transform.position + bottomOffset.localPosition, collisionRadius, groundLayer);
         if (onGround) Movement.inst.rb.drag = 3;
         else Movement.inst.rb.drag = 0;
 
         // Check for walls
-        onWall = Physics.CheckSphere(transform.position + rightOffset, collisionRadius, groundLayer)
-            || Physics.CheckSphere(transform.position + leftOffset, collisionRadius, groundLayer);
+        onWall = Physics.CheckSphere(transform.position + rightOffset.localPosition, collisionRadius, groundLayer)
+            || Physics.CheckSphere(transform.position + leftOffset.localPosition, collisionRadius, groundLayer);
 
-        onRightWall = Physics.CheckSphere(transform.position + rightOffset, collisionRadius, groundLayer);
-        onLeftWall = Physics.CheckSphere(transform.position + leftOffset, collisionRadius, groundLayer);
+        onRightWall = Physics.CheckSphere(transform.position + rightOffset.localPosition, collisionRadius, groundLayer);
+        onLeftWall = Physics.CheckSphere(transform.position + leftOffset.localPosition, collisionRadius, groundLayer);
 
         wallSide = onRightWall ? -1 : (onLeftWall ? 1 : 0);
     }
@@ -45,8 +45,8 @@ public class Collisions : MonoBehaviour
         Gizmos.color = debugCollisionColor;
 
         // Draw spheres for the collision checks
-        Gizmos.DrawWireSphere(transform.position + bottomOffset, collisionRadius);
-        Gizmos.DrawWireSphere(transform.position + rightOffset, collisionRadius);
-        Gizmos.DrawWireSphere(transform.position + leftOffset, collisionRadius);
+        Gizmos.DrawWireSphere(transform.position + bottomOffset.localPosition, collisionRadius);
+        Gizmos.DrawWireSphere(transform.position + rightOffset.localPosition, collisionRadius);
+        Gizmos.DrawWireSphere(transform.position + leftOffset.localPosition, collisionRadius);
     }
 }

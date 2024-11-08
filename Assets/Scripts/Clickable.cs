@@ -24,7 +24,7 @@ namespace DefaultNamespace {
         private void Update() {
             if (clicked) return;
             if (!canClick) return;
-            if (Input.GetMouseButtonDown(0)) ue.Invoke();
+            if (Input.GetKeyDown(KeyCode.F)) ue.Invoke();
         }
 
         public void openGravity() {
