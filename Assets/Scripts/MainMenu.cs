@@ -16,7 +16,17 @@ public class MainMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false; // Stops playing in the editor
 #else
-            Application.Quit(); // Quits the game in a standalone build
+        Application.Quit(); // Quits the game in a standalone build
 #endif
+    }
+
+    // Trigger event for collision detection with player
+    private void OnTriggerEnter(Collider other)
+    {
+        // Check if the colliding object is the player (assuming it has a "Player" tag)
+        if (other.CompareTag("Player"))
+        {
+            StartGame(); // Calls StartGame if player collides
+        }
     }
 }
