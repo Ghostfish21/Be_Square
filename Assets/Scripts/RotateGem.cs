@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class PulseGem : MonoBehaviour
+public class RotateGem : MonoBehaviour
 {
-    public float pulseSpeed = 2f; // 控制缩放和透明度变换的速度
-    public float scaleAmount = 0.1f; // 控制缩放的幅度
+    public float pulseSpeed = 2f; // Controls the pulsing speed
+    public float scaleAmount = 0.1f; // Controls the scale amount
+    public ParticleSystem gemDestroyEffect; // Particle effect prefab to play upon destruction
     private Vector3 initialScale;
     private Material gemMaterial;
     private Color initialColor;
 
     void Start()
     {
-        // 记录初始缩放和颜色
+        // Record initial scale and color
         initialScale = transform.localScale;
         gemMaterial = GetComponent<Renderer>().material;
         initialColor = gemMaterial.color;
@@ -18,11 +19,11 @@ public class PulseGem : MonoBehaviour
 
     void Update()
     {
-        // 缩放效果：在原始大小基础上微弱地缩放
+        // Scaling effect: slightly pulse based on the initial size
         float scale = 1 + Mathf.Sin(Time.time * pulseSpeed) * scaleAmount;
         transform.localScale = initialScale * scale;
 
-        // 透明度闪烁效果
+        // Alpha pulsing effect
         float alpha = 0.5f + Mathf.Sin(Time.time * pulseSpeed) * 0.5f;
         Color color = initialColor;
         color.a = alpha;
@@ -31,10 +32,16 @@ public class PulseGem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 检查是否与玩家碰撞
+        // Check for collision with player
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject); // 碰撞后销毁 gem
+            // Play particle effect at the gem's position and rotation
+            if (gemDestroyEffect != null)
+            {
+                Instantiate(gemDestroyEffect, transform.position, Quaternion.identity);
+            }
+
+            Destroy(gameObject); // Destroy gem after collision
         }
     }
 }

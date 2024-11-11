@@ -2049,6 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &287785004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2787,6 +2788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &426915811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4895,6 +4897,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &1171446541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5803,6 +5806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &1463059385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5910,6 +5914,7 @@ Transform:
   - {fileID: 1845872028}
   - {fileID: 426915809}
   - {fileID: 1463059383}
+  - {fileID: 1787062743}
   m_Father: {fileID: 267799089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492841463
@@ -7114,6 +7119,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760055865}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1787062743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 409170515216789790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1787062745 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6805921799561169608, guid: f2ac9702308c7644aa860ec3c4d952a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 409170515216789790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1791632961
 GameObject:
   m_ObjectHideFlags: 0
@@ -7234,6 +7251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!1 &1804508056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7419,6 +7437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &1819997812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7687,6 +7706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 1787062745}
 --- !u!65 &1845872030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8735,6 +8755,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2103030975}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &409170515216789790
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1481308618}
+    m_Modifications:
+    - target: {fileID: 1501642077786372119, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_Name
+      value: Particle System
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -55.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 66.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650046491041097498, guid: f2ac9702308c7644aa860ec3c4d952a1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f2ac9702308c7644aa860ec3c4d952a1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
