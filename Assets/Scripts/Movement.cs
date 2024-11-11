@@ -49,7 +49,8 @@ public class Movement : MonoBehaviour {
         Vector3 upVelo = rb.velocity.time(rb.transform.up);
         
         animator.SetFloat("xVelocity", Mathf.Abs(Input.GetAxis("Horizontal")));
-        animator.SetFloat("yVelocity", upVelo.x + upVelo.y + upVelo.z);
+        if (coll.onGround) animator.SetFloat("yVelocity", 0);
+        else animator.SetFloat("yVelocity", upVelo.x + upVelo.y + upVelo.z);
     }
 
     private void Update() {
