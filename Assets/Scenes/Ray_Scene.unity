@@ -401,6 +401,7 @@ Transform:
   - {fileID: 830368749}
   - {fileID: 337563285}
   - {fileID: 421832911}
+  - {fileID: 1193186431}
   m_Father: {fileID: 1537964483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &116621635
@@ -767,12 +768,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f9f1bef443e0b2f449ef395905043990,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.64
+      value: -2.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9f1bef443e0b2f449ef395905043990,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.1
+      value: -4.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f9f1bef443e0b2f449ef395905043990,
         type: 3}
@@ -2047,7 +2048,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &287785004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2784,7 +2786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &426915811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4891,7 +4894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &1171446541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5092,13 +5096,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193186430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -5.1055794, y: -1.2292975, z: -7.014704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 250524957}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 116621634}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1256352968
 GameObject:
@@ -5798,7 +5802,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &1463059385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7228,7 +7233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!1 &1804508056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7412,7 +7418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 100
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &1819997812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7645,6 +7652,7 @@ GameObject:
   - component: {fileID: 1845872031}
   - component: {fileID: 1845872030}
   - component: {fileID: 1845872029}
+  - component: {fileID: 1845872033}
   m_Layer: 6
   m_Name: gems (4)
   m_TagString: Untagged
@@ -7676,9 +7684,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845872027}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa4733e55ead5f429effee897ee8ead, type: 3}
+  m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!65 &1845872030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7750,6 +7760,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845872027}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1845872033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845872027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897e0dd24ae99884498801859c7f0083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseSpeed: 2
+  scaleAmount: 0.1
 --- !u!1 &1848568788
 GameObject:
   m_ObjectHideFlags: 0
@@ -8733,5 +8757,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1102432172}
   - {fileID: 361898994}
-  - {fileID: 1193186431}
   - {fileID: 757505099}

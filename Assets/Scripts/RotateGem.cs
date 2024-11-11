@@ -1,13 +1,32 @@
 using UnityEngine;
 
-public class RotateGem : MonoBehaviour
+public class PulseGem : MonoBehaviour
 {
-    public float rotationSpeed = 100f; // 控制旋转速度
+    public float pulseSpeed = 2f; // 控制缩放和透明度变换的速度
+    public float scaleAmount = 0.1f; // 控制缩放的幅度
+    private Vector3 initialScale;
+    private Material gemMaterial;
+    private Color initialColor;
+
+    void Start()
+    {
+        // 记录初始缩放和颜色
+        initialScale = transform.localScale;
+        gemMaterial = GetComponent<Renderer>().material;
+        initialColor = gemMaterial.color;
+    }
 
     void Update()
     {
-        // 沿着 XY 平面旋转 gem
-        transform.Rotate(rotationSpeed * Time.deltaTime, rotationSpeed * Time.deltaTime, 0);
+        // 缩放效果：在原始大小基础上微弱地缩放
+        float scale = 1 + Mathf.Sin(Time.time * pulseSpeed) * scaleAmount;
+        transform.localScale = initialScale * scale;
+
+        // 透明度闪烁效果
+        float alpha = 0.5f + Mathf.Sin(Time.time * pulseSpeed) * 0.5f;
+        Color color = initialColor;
+        color.a = alpha;
+        gemMaterial.color = color;
     }
 
     private void OnTriggerEnter(Collider other)
