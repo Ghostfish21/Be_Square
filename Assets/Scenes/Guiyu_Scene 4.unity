@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1465257, g: 0.16323638, b: 0.16556, a: 1}
+  m_IndirectSpecularColor: {r: 0.14652552, g: 0.16323622, b: 0.16555968, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2051,6 +2051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &287785004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2789,6 +2790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &426915811
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4349,7 +4351,7 @@ Transform:
   m_GameObject: {fileID: 879357498}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 9.19, y: -5.99, z: -2.08}
+  m_LocalPosition: {x: 9.19, y: -5.45, z: -2.08}
   m_LocalScale: {x: 3.6, y: 0.9214015, z: 4.3161325}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4915,12 +4917,57 @@ Transform:
   - {fileID: 1985898182}
   - {fileID: 2062667026}
   - {fileID: 1926640280}
+  - {fileID: 1470284546}
   - {fileID: 1957828283}
   - {fileID: 640985580}
   - {fileID: 1455256390}
   - {fileID: 970865509}
   m_Father: {fileID: 1537964483}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1082400268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082400269}
+  - component: {fileID: 1082400270}
+  m_Layer: 0
+  m_Name: Task Performer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1082400269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082400268}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1102432172}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1082400270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082400268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2abb45fca4e4a14aa9db4f1c691c300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1083641296
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,6 +5104,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1986319077}
+  - {fileID: 1082400269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171446538
@@ -5108,6 +5156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &1171446541
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6016,6 +6065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &1463059385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6192,6 +6242,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463119793}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1470284545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1470284546}
+  - component: {fileID: 1470284547}
+  m_Layer: 6
+  m_Name: Middle Wall (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1470284546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470284545}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 4.46, y: -2.2347002, z: -0.6}
+  m_LocalScale: {x: 0.22115421, y: 22.321651, z: 9.382722}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1044685003}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+--- !u!65 &1470284547
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470284545}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000001, y: 0.99999994, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1481308617
 GameObject:
   m_ObjectHideFlags: 0
@@ -7553,6 +7656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!1 &1804508056
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,6 +7737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &1819997812
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7901,6 +8006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pulseSpeed: 2
   scaleAmount: 0.1
+  gemDestroyEffect: {fileID: 0}
 --- !u!65 &1845872030
 BoxCollider:
   m_ObjectHideFlags: 0
