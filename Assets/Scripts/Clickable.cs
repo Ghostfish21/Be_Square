@@ -43,12 +43,12 @@ namespace DefaultNamespace {
             exitSign.transform.DOScale(0, 0.3f);
             Movement.inst.rb.transform.DORotate(Movement.inst.rb.transform.eulerAngles.xy_(-90), 0.7f);
             Movement.inst.rb.transform.DOMove(this.transform.position.xy_(-3.5f), 1.5f);
-            Movement.inst.rb.transform.DOScale(7f, 4f).OnComplete(() => {
+            Movement.inst.rb.transform.DOScale(0.07f, 4f).OnComplete(() => {
                 Movement.inst.rb.transform.DOMove(outSign.transform.position, 1f).OnComplete(
                     () => {
                         Movement.inst.rb.transform.DORotate(Movement.inst.rb.transform.eulerAngles.xy_(0f), 0.1f);
                         Movement.inst.rb.transform.DOMove(Movement.inst.rb.position.xy_(z), 0.1f);
-                        Movement.inst.rb.transform.DOScale(71.74f, 0.1f);
+                        Movement.inst.rb.transform.DOScale(0.7f, 0.1f);
                         Movement.inst.rb.useGravity = true;
                         Movement.inst.canMove = true;
                     });
