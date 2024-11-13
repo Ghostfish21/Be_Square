@@ -82,7 +82,7 @@ public class Timer : MonoBehaviour
             Scene currentScene = SceneManager.GetActiveScene();
             Time.timeScale = 1;
             SceneManager.LoadScene(currentScene.name);
-
+            Physics.gravity = new Vector3(0, -9.8f, 0);
         }
     }
 
