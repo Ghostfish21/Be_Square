@@ -25,6 +25,16 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(LoadScene());
 
     }
+
+    public void Cntr()
+    {
+
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
     IEnumerator LoadScene()
     {
 
