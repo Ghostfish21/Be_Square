@@ -1317,7 +1317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneCurtains: {fileID: 1866656549}
   Player: {fileID: 1983563592}
-  SceneName: 
+  SceneName: TutorialScene
 --- !u!1 &1013238897
 GameObject:
   m_ObjectHideFlags: 0
