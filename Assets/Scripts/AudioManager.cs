@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip dashSFX;
     public AudioClip hitSFX;
     public AudioClip startGameSFX;
+    public AudioClip endGameSFX;
 
 
 

@@ -2915,8 +2915,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider1: {fileID: 1930751146}
   slider2: {fileID: 1384432006}
-  gameTime: 25
-  timeDuration: 25
+  gameTime: 20
+  timeDuration: 20
   time: 0
   isRunning: 0
   background_1: {fileID: 646415574}

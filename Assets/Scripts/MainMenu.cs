@@ -26,6 +26,8 @@ public class MainMenu : MonoBehaviour
         // Check if the colliding object is the player (assuming it has a "Player" tag)
         if (other.CompareTag("Player"))
         {
+            Physics.gravity = new Vector3(0, -9.8f, 0);
+            GemManager.collected = 0;
             StartGame(); // Calls StartGame if player collides
         }
     }
