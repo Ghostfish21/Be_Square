@@ -8723,8 +8723,8 @@ MonoBehaviour:
   groundTouched: 0
   dashing: 0
   hasDashed: 0
-  middleLayer: {fileID: 0}
-  innerLayer: {fileID: 0}
+  middleLayer: {fileID: 1537964484}
+  innerLayer: {fileID: 116621635}
 --- !u!114 &1578414191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9325,7 +9325,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.409
   m_Pitch: 1
   Loop: 0
   Mute: 0
