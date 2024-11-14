@@ -57,13 +57,12 @@ namespace DefaultNamespace {
             });
         }
 
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            if (other.CompareTag("Player"))
-            {
-                Wsign.SetActive(true);
-                Debug.Log("DOOR Hit");
-            }
+        public void showLetter() {
+            Wsign.SetActive(true);
+        }
+
+        public void hideLetter() {
+            Wsign.SetActive(false);
         }
 
     }
