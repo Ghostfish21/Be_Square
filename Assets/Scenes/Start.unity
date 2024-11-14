@@ -3442,11 +3442,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983563589}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e575e06261fb39d4fab2718f797a0579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSearch: {fileID: 0}
   speed: 8
   moveX: 0
   jumpVelocity: 7
