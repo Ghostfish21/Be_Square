@@ -4,6 +4,8 @@ public class RotateGem : MonoBehaviour
 {
     public float pulseSpeed = 2f; // Controls the pulsing speed
     public float scaleAmount = 0.1f; // Controls the scale amount
+    public int collected = 0;
+    public int totalGem = 12;
     public ParticleSystem gemDestroyEffect; // Particle effect prefab to play upon destruction
     private Vector3 initialScale;
     private Material gemMaterial;
@@ -40,8 +42,11 @@ public class RotateGem : MonoBehaviour
             {
                 Instantiate(gemDestroyEffect, transform.position, Quaternion.identity);
             }
+            
 
             Destroy(gameObject); // Destroy gem after collision
+            GemManager.collected++;
+
         }
     }
 }
