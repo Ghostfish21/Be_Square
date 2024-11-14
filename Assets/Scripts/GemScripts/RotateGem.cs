@@ -37,6 +37,8 @@ public class RotateGem : MonoBehaviour
         // Check for collision with player
         if (other.CompareTag("Player"))
         {
+            ScreenShake.instance.TriggerShake(0.2f,0.4f);
+
             // Play particle effect at the gem's position and rotation
             if (gemDestroyEffect != null)
             {

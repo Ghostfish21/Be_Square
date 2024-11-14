@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Ray_Scene3.unity
     guid: 50ad036d35baf5d4d9f7affd3e6a03e8
   - enabled: 1
+    path: Assets/Scenes/Ray_Scene3 1.unity
+    guid: 98a8a49860fe58740a16c12f75a63151
+  - enabled: 1
+    path: Assets/Scenes/Ray_Scene3 2.unity
+    guid: 2eedaeaf53fa7a04c98685b1517e7162
+  - enabled: 1
     path: Assets/Scenes/ray_next_level.unity
     guid: c71611d4c6f2ed643a3273cc05e4a84e
   - enabled: 1
