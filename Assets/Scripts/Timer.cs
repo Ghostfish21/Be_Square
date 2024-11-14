@@ -70,7 +70,7 @@ public class Timer : MonoBehaviour
     {
         //freeze game
         Time.timeScale = 0;
-
+        ScreenShake.instance.TriggerShake(0.0f, 0.0f);
         gameOverScreen.SetActive(true);
 
         fill_1.enabled = false;
