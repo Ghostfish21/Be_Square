@@ -12,6 +12,7 @@ namespace DefaultNamespace {
         public UnityEvent ue;
         public GameObject outSign;
         public GameObject exitSign;
+        public GameObject Wsign;
 
         private Rigidbody rigidBody;
         private Collider collider;
@@ -19,6 +20,7 @@ namespace DefaultNamespace {
         private void Awake() {
             rigidBody = GetComponent<Rigidbody>();
             collider = GetComponent<Collider>();
+            
         }
 
         private void Update() {
@@ -54,5 +56,15 @@ namespace DefaultNamespace {
                     });
             });
         }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Wsign.SetActive(true);
+                Debug.Log("DOOR Hit");
+            }
+        }
+
     }
 }
