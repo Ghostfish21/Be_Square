@@ -61,6 +61,15 @@ public class Movement : MonoBehaviour {
         Flip();
         //ApplyGravity();
         HandleJump();
+        // Velocity Check
+        Vector3 orientation = rb.transform.forward;
+        if (orientation.x != 0) rb.velocity = rb.velocity._yz(temp(rb.velocity.x));
+        if (orientation.y != 0) rb.velocity = rb.velocity.x_z(temp(rb.velocity.y));
+        if (orientation.z != 0) rb.velocity = rb.velocity.xy_(temp(rb.velocity.z));
+    }
+
+    private float temp(float input) {
+        return Mathf.Sign(input) * Mathf.Min(3.5f, Mathf.Abs(input));
     }
 
     private void Run() {
