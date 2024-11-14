@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour {
     
     private Collisions coll;
     private Animator animator;
+    public AudioManager audioSearch;
     public Rigidbody rb { get; private set; }
 
     // Movement Stats
@@ -43,6 +44,7 @@ public class Movement : MonoBehaviour {
         coll = GetComponent<Collisions>();
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        audioSearch = GameObject.FindGameObjectWithTag("audio").GetComponent<AudioManager>();
     }
 
     private void FixedUpdate() {
@@ -151,8 +153,9 @@ public class Movement : MonoBehaviour {
     }
 
     private void Jump(Vector3 dir) {
-        animator.SetTrigger("Jump");
 
+        animator.SetTrigger("Jump");
+        AudioManager.instance.PlaySFX(audioSearch.jumpSFX);
         Vector3 resetVec = 1f.fff() - dir;
         
         rb.velocity = rb.velocity.time(resetVec); // Reset Y velocity before jumping
@@ -162,6 +165,7 @@ public class Movement : MonoBehaviour {
     private void FirstTouch() {
         hasDashed = false; // Dash resets when player touches ground
         dashing = false; // Dashing reset
+        AudioManager.instance.PlaySFX(audioSearch.landSFX);
     }
     
     internal Vector3 facing = new(0, 90, 0);

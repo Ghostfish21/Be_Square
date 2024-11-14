@@ -12,6 +12,7 @@ namespace DefaultNamespace {
         public UnityEvent ue;
         public GameObject outSign;
         public GameObject exitSign;
+        public GameObject Wsign;
 
         private Rigidbody rigidBody;
         private Collider collider;
@@ -19,12 +20,12 @@ namespace DefaultNamespace {
         private void Awake() {
             rigidBody = GetComponent<Rigidbody>();
             collider = GetComponent<Collider>();
+            
         }
 
         private void Update() {
             if (clicked) return;
             if (!canClick) return;
-            //if (Input.GetMouseButtonDown(0)) ue.Invoke();
             if (Input.GetKeyDown(KeyCode.W)) ue.Invoke();
         }
 
@@ -55,5 +56,14 @@ namespace DefaultNamespace {
                     });
             });
         }
+
+        public void showLetter() {
+            Wsign.SetActive(true);
+        }
+
+        public void hideLetter() {
+            Wsign.SetActive(false);
+        }
+
     }
 }
